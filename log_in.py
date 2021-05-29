@@ -1,4 +1,5 @@
 from tkinter import *
+import os
 
 data=Tk()
 data.title("Log in")
@@ -15,15 +16,15 @@ def login_success():
     data2.title("success")
     data2.geometry("150x100")
     Label(data2, text="Log in success").pack()
-    Button(data, text="Ok", command=delete2)
+    Button(data2, text="Ok", command=delete2).pack()
 
 
 def password_not_recognize():
-    print("working")
+    print("Password is incorrect")
 
 
 def user_not_found():
-    print("working")
+    print("username is incorrect")
 
 def register_success():
     username_info=username.get()
@@ -44,8 +45,8 @@ def register_success():
 def login_verify():
     username=username_verify1.get()
     password=password_verify1.get()
-    username_entry.delete(0,END)
-    password_entry.delete(0,END)
+    username_entry1.delete(0,END)
+    password_entry1.delete(0,END)
 
     list_of_files= os.listdir()
     if username in list_of_files:
@@ -55,6 +56,8 @@ def login_verify():
             login_success()
         else:
             password_not_recognize()
+    else:
+        user_not_found()
 
 
 def register():
@@ -102,6 +105,8 @@ def register():
 def login():
     global username_verify1
     global password_verify1
+    global username_entry1
+    global password_entry1
     global login
     login=Toplevel()
     login.title("Login")
@@ -129,7 +134,8 @@ def login():
 Label(data,text="Enter your username and password",width=300,height=2,font="time 11").pack()
 Label(data,text="").pack()
 
-Button(data,text="Register", width=300, height=2,command=register).pack()
 Button(data,text="Log in", width=300, height=2,command=login).pack()
+Button(data,text="Register", width=300, height=2,command=register).pack()
+
 
 data.mainloop()
