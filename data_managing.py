@@ -1,6 +1,7 @@
 from tkinter import *
 from PIL import ImageTk, Image
 from tkinter.font import Font
+import sqlite3
 welcome=Tk()
 welcome.title("Welcome")
 welcome.iconbitmap("")

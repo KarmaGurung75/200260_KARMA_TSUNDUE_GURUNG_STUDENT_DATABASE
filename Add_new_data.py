@@ -1,15 +1,37 @@
-import email
-from datetime import date
 from tkinter import *
 import time
+import email
+from datetime import date
 from tkinter import ttk
 import tkinter.messagebox
 import sqlite3
+
 
 database=Tk()
 database.title("Student Database")
 database.geometry('1350x750+0+0')
 database.config(bg="light green")
+
+# Create a databases or connect to one
+conn = sqlite3.connect('project_database1.db')
+# Create cursor
+c = conn.cursor()
+'''
+# Create table
+c.execute(""" CREATE TABLE studentdata1(
+      StdID text,
+      Firstname text,
+      Surname text,
+      Date_Of_Birth text,
+      Age text,
+      Gender text,
+      Address text,
+      Email text
+      Mobile_number text
+) """)
+print("create table sucess")
+'''
+
 
 # user input data
 StdID=StringVar()
@@ -79,7 +101,7 @@ EntrySur_name.grid(row=2,column=1)
 
 lblDate_Of_Birth=Label(DataFrameLeft,font=("Times New Roman",14,"bold",),padx=10,pady=10,text="Date Of Birth",bg="white")
 lblDate_Of_Birth.grid(row=3,column=0,sticky=W)
-EntryDate_Of_Birth=Entry(DataFrameLeft,textvariable=date,font=("Times New Roman",14,"bold",),bg="white",width=28)
+EntryDate_Of_Birth=Entry(DataFrameLeft,textvariable=Date_Of_Birth,font=("Times New Roman",14,"bold",),bg="white",width=28)
 EntryDate_Of_Birth.grid(row=3,column=1)
 
 lblAge=Label(DataFrameLeft,font=("Times New Roman",14,"bold",),padx=10,pady=10,text="Age",bg="white")
@@ -103,12 +125,12 @@ cboGender.grid(row=6,column=1)
 
 lblEmail=Label(DataFrameLeft,font=("Times New Roman",14,"bold",),padx=10,pady=10,text="Email",bg="white")
 lblEmail.grid(row=7,column=0,sticky=W)
-EntryEmail=Entry(DataFrameLeft,textvariable=email,font=("Times New Roman",14,"bold",),bg="white",width=28)
+EntryEmail=Entry(DataFrameLeft,textvariable=Email,font=("Times New Roman",14,"bold",),bg="white",width=28)
 EntryEmail.grid(row=7,column=1)
 
 lblMobile=Label(DataFrameLeft,font=("Times New Roman",14,"bold",),padx=10,pady=10,text="Mobile No.",bg="white")
 lblMobile.grid(row=8,column=0,sticky=W)
-EntryMobile=Entry(DataFrameLeft,textvariable=lblMobile,font=("Times New Roman",14,"bold",),bg="white",width=28)
+EntryMobile=Entry(DataFrameLeft,textvariable=Mobile_number,font=("Times New Roman",14,"bold",),bg="white",width=28)
 EntryMobile.grid(row=8,column=1)
 
 # function of the data management button
@@ -136,11 +158,12 @@ def Clear():
 # Add Data Function
 def Add():
     # Create a databases or connect to one
-    conn = sqlite3.connect('Student_Database.db')
+    conn = sqlite3.connect('student_database.db')
     # Create cursor
     c = conn.cursor()
     # Insert into table
-    c.execute("INSERT INTO Student_Database VALUES (:Firstname, :Surname, :Date_Of_Birth, :Age, :Gender, :Address, :Email,:Mobile_number)", {
+    c.execute("INSERT INTO studentdata1 VALUES (:StdID,:Firstname, :Surname, :Date_Of_Birth, :Age, :Gender, :Address, :Email,:Mobile_number)", {
+        'StdID':StdID.get(),
         'firstname':Firstname.get(),
         'surname': Surname.get(),
         'Date_of_Birth':Date_Of_Birth.get(),
@@ -155,15 +178,18 @@ def Add():
     conn.commit()
     conn.close()
     # clear the text boxes
-    Firstname.delete(0, END)
-    Surname.delete(0, END)
-    Date_Of_Birth.delete(0, END)
-    Age.delete(0, END)
-    Gender.delete(0, END)
-    Address.delete(0, END)
-    Email.delete(0, END)
-    Mobile_number.delete(0, END)
+    EntryStdID.delete(0,END)
+    EntryFirst_name.delete(0, END)
+    EntrySur_name.delete(0, END)
+    EntryDate_Of_Birth.delete(0, END)
+    EntryAge.delete(0, END)
+    cboGender.delete(0, END)
+    EntryAddress.delete(0, END)
+    EntryEmail.delete(0, END)
+    EntryMobile.delete(0, END)
 
+    #DateIssued.set(time.strftime("%d/%m/%Y"))
+    #std_info.insert(END,'Student ID:\t\t'+ StdID.get()+ '\t\t'DateIssued.get(), + "\n")
 
 
 # data management button
@@ -190,13 +216,14 @@ Exit=Button(ButtonFrame, text="Exit",font=("Times New Roman",12,"bold"), height=
 Exit.grid(row=0,column=6)
 
 # Database
+
 def query():
     # Create a databases or connect to one
-    conn = sqlite3.connect('Student_Database.db')
+    conn = sqlite3.connect('student_database.db')
     # Create cursor
     c = conn.cursor()
     # query of the database
-    c.execute("SELECT *, oid FROM Student_Database")
+    c.execute("SELECT *, oid FROM studentdata1")
     records = c.fetchall()
    # print(records)
     # Loop through the results
@@ -204,11 +231,14 @@ def query():
     for record in records:
         #str(record[6]) added for displaying the id
         print_record += str(record[0]) + ' ' + str(record[1]) + ' '+ '\t' + str(record[6]) + "\n"
-    query_label = Label(root, text=print_record)
+    query_label = Label(ButtonFrame, text=print_record)
     query_label.grid(row=12, column=0, columnspan=2)
 
     conn.commit()
     conn.close()
 
-
+# commit change
+conn.commit()
+# close connection
+conn.close()
 database.mainloop()
