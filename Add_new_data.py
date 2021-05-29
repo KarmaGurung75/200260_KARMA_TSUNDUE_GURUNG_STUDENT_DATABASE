@@ -10,7 +10,7 @@ import sqlite3
 database=Tk()
 database.title("Student Database")
 database.geometry('1350x750+0+0')
-database.config(bg="light green")
+database.config(bg="light gray")
 
 # Create a databases or connect to one
 conn = sqlite3.connect('project_database1.db')
