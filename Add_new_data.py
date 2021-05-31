@@ -1,7 +1,5 @@
 from tkinter import *
-import time
-import email
-from datetime import date
+import _datetime
 from tkinter import ttk
 import tkinter.messagebox
 import sqlite3

@@ -95,11 +95,11 @@ def login_verify():
     records = c.fetchall()
     # Loop through the results
     for record in records:
-        if str(record[0]) == Email_entry1.get() and str(record[5]) == password_entry1.get():
+        if str(record[2]) == Email_entry1.get() and str(record[5]) == password_entry1.get():
             # str(record[6]) added for displaying the id
             try:
-                messagebox.showinfo("login", "login successful", parent=data)
-                login.withdraw()
+                return messagebox.showinfo("login", "login successful", parent=data)
+                #login.withdraw()
 
             except:
                 pass
