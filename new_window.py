@@ -4,6 +4,10 @@ from tkinter.font import Font
 from tkinter import messagebox
 import os
 import sqlite3
+import Add_new_data
+
+
+
 data=Tk()
 data.title("Welcome")
 data.iconbitmap("")
@@ -43,7 +47,6 @@ def open():
 
 def delete2():
     data2.destroy()
-
 
 def login_success():
     global data2
@@ -98,17 +101,21 @@ def login_verify():
         if str(record[2]) == Email_entry1.get() and str(record[5]) == password_entry1.get():
             # str(record[6]) added for displaying the id
             try:
-                return messagebox.showinfo("login", "login successful", parent=data)
-                #login.withdraw()
+                messagebox.showinfo("login", "login successful", parent=login1)
+                login1.withdraw()
+                data0.withdraw()
+                data.withdraw()
+                return Add_new_data.std_data()
+
 
             except:
                 pass
         elif Email_entry1.get() == "" or password_entry1.get() == "":
             try:
-                return messagebox.showinfo("login", "Please fill completely.", parent=login)
+                return messagebox.showinfo("login", "Please fill completely.", parent=login1)
             except:
                 pass
-    messagebox.showinfo("login", "Your Email and password do not match.", parent=login)
+    messagebox.showinfo("login", "Your Email and password do not match.", parent=login1)
 
     conn.commit()
     conn.close()
@@ -174,27 +181,27 @@ def login():
     global password_1
     global Email_entry1
     global password_entry1
-    global login
-    login=Toplevel()
-    login.title("Login")
-    login.geometry("300x250")
-    Label(login, text="Please Enter your username and password")
-    Label(login, text="").pack()
+    global login1
+    login1=Toplevel()
+    login1.title("Login")
+    login1.geometry("300x250")
+    Label(login1, text="Please Enter your username and password")
+    Label(login1, text="").pack()
 
     Email_1=StringVar()
     password_1=StringVar()
 
     # username registration
-    Label(login, text="Email").pack()
-    Email_entry1= Entry(login, textvariable=Email_1)
+    Label(login1, text="Email").pack()
+    Email_entry1= Entry(login1, textvariable=Email_1)
     Email_entry1.pack()
 
     # password registration
-    Label(login, text="Password").pack()
-    password_entry1 = Entry(login, textvariable=password_1)
+    Label(login1, text="Password").pack()
+    password_entry1 = Entry(login1, textvariable=password_1)
     password_entry1.pack()
 
-    Button(login, text="Log in", width=300, height=2, command=login_verify).pack()
+    Button(login1, text="Log in", width=300, height=2, command=login_verify).pack()
 
 
 
