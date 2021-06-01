@@ -59,6 +59,7 @@ def login_success():
 def register_success():
     if Firstname.get() == "" or Surname.get() == "" or Email.get() == "" or address.get() == "" or contact.get() == " " or password.get() == " ":
         messagebox.showinfo("Incomplete registration", "Please fill the form completely")
+
     else:
         conn = sqlite3.connect('login_register.db')
         # Create cursor
@@ -78,6 +79,10 @@ def register_success():
         conn.commit()
         conn.close()
         messagebox.showinfo("Register", "You have successfully registered")
+        data0.withdraw()
+        data.withdraw()
+        data1.withdraw()
+        return Database.std_data()
 
 
     Firstname_entry.delete(0, END)
