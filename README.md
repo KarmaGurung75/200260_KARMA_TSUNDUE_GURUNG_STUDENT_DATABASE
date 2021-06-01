@@ -37,7 +37,7 @@ Conclusion:
   It is easily accessible by the manager and can be kept safe for a long time with no alterations.
   
 Links For video and code: 
-  GitHub Link:
+  GitHub Link:https://github.com/KarmaGurung75/200260_KARMA_TSUNDUE_GURUNG_STUDENT_DATABASE
   YouTube Link:
 
 
