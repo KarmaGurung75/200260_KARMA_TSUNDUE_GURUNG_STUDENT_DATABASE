@@ -4,7 +4,7 @@ from tkinter.font import Font
 from tkinter import messagebox
 import os
 import sqlite3
-import Add_new_data
+import Database
 
 
 
@@ -105,7 +105,7 @@ def login_verify():
                 login1.withdraw()
                 data0.withdraw()
                 data.withdraw()
-                return Add_new_data.std_data()
+                return Database.std_data()
 
 
             except:
