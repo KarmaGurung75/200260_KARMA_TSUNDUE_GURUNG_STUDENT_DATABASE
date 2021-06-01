@@ -261,25 +261,25 @@ def std_data():
         c = conn.cursor()
         record_id = StdID.get()
         c.execute(""" UPDATE student_data2 SET
-                 StdID = :EntryStdID,
-                 Firstname = :EntryFirstname,
-                 Surname = :EntrySurname,
-                 Date_Of_Birth = :EntryDate_Of_Birth,
-                 Age = :EntryAge,
-                 Address = :EntryAddress,
-                 Gender=:cboGender,
-                 Email=:EntryEmail,
-                 Mobile_number =: EntryMobile_number
-                 WHERE oid = :oid""",
-                  {'EntryStdID': EntryStdID.get(),
-                   'EntryFirstname': EntryFirst_name.get(),
-                   'EntrySurname': EntrySur_name.get(),
-                   'EntryDate_Of_Birth': EntryDate_Of_Birth.get(),
-                   'EntryAge':EntryAge.get(),
-                   'EntryAddress':EntryAddress.get(),
+                 StdID = StdID,
+                 Firstname = Firstname,
+                 Surname = Surname,
+                 Date_Of_Birth = Date_Of_Birth,
+                 Age = Age,
+                 Address = Address,
+                 Gender=Gender,
+                 Email=Email,
+                 Mobile_number =Mobile_number
+                 WHERE oid = oid""",
+                  {'StdID': EntryStdID.get(),
+                   'Firstname': EntryFirst_name.get(),
+                   'Surname': EntrySur_name.get(),
+                   'Date_Of_Birth': EntryDate_Of_Birth.get(),
+                   'Age':EntryAge.get(),
+                   'Address':EntryAddress.get(),
                    'cboGender': cboGender.get(),
-                   'EntryEmail': EntryEmail.get(),
-                   'EntryMobile_number': EntryMobile.get(),
+                   'Email': EntryEmail.get(),
+                   'Mobile_number': EntryMobile.get(),
                    'oid': record_id
                         }
             )
