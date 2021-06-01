@@ -1,8 +1,6 @@
 from tkinter import *
 from PIL import ImageTk, Image
-from tkinter.font import Font
 from tkinter import messagebox
-import os
 import sqlite3
 import Database
 
@@ -59,6 +57,9 @@ def login_success():
 def register_success():
     if Firstname.get() == "" or Surname.get() == "" or Email.get() == "" or address.get() == "" or contact.get() == " " or password.get() == " ":
         messagebox.showinfo("Incomplete registration", "Please fill the form completely")
+        data0.withdraw()
+        data.withdraw()
+        return data1
 
     else:
         conn = sqlite3.connect('login_register.db')
@@ -74,8 +75,7 @@ def register_success():
                     'password': password.get(),
 
                 })
-        # showinfo
-        # messagebox
+
         conn.commit()
         conn.close()
         messagebox.showinfo("Register", "You have successfully registered")
@@ -91,7 +91,7 @@ def register_success():
     address_entry.delete(0, END)
     contact_entry.delete(0, END)
     password_entry.delete(0, END)
-    #Label(data1,text="Registration successful", fg="green",font="time,11").pack()
+
 
 def login_verify():
     # Create a databases or connect to one
@@ -104,7 +104,6 @@ def login_verify():
     # Loop through the results
     for record in records:
         if str(record[2]) == Email_entry1.get() and str(record[5]) == password_entry1.get():
-            # str(record[6]) added for displaying the id
             try:
                 messagebox.showinfo("login", "login successful", parent=login1)
                 login1.withdraw()

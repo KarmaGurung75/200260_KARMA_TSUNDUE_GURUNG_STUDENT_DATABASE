@@ -13,7 +13,7 @@ def std_data():
     database.geometry('1350x750+0+0')
     database.config(bg="light gray")
 
-    # Create a databases or connect to one
+    # Create a databases
     conn = sqlite3.connect('project_database3.db')
     # Create cursor
     c = conn.cursor()
@@ -135,13 +135,6 @@ def std_data():
                         width=28)
     EntryMobile.grid(row=8, column=1)
 
-    # Update and Delete entry and label
-    '''lblUD = Label( DataFrameRight, font=("Times New Roman", 10, "bold",), padx=9, pady=9, text="Enter ID",
-                    bg="white")
-    lblUD.grid(row=5, column=1)
-    EntryUD = Entry( DataFrameRight, textvariable=StdID, font=("Times New Roman", 14, "bold",), bg="white", width=20)
-    EntryUD.grid(row=5, column=0)'''
-
     # function of the data management button
 
     # exit function
@@ -194,7 +187,7 @@ def std_data():
                 'Email': EntryEmail.get(),
                 'Mobile_number': EntryMobile.get()
             })
-        # showinfo messagebox
+
         messagebox.showinfo("student_data2", "Inserted Successfully")
         conn.commit()
         conn.close()
@@ -229,25 +222,23 @@ def std_data():
         display = Tk()
         display.title('Display')
         display.geometry('500x500')
-        DisplayFrame = Frame(display, bd=1, width=1300, height=400, padx=20, pady=20, relief=RIDGE, bg="light blue")
-        DisplayFrame.place(x=200,y=400)
 
-        # Create a databases or connect to one
+        # databases connect to one project-database3 for getting data
         conn = sqlite3.connect('project_database3.db')
         # Create cursor
         c = conn.cursor()
         # query of the database
         c.execute("SELECT *, StdID FROM student_data2")
         records = c.fetchall()
-        # print(records)
+
         # Loop through the results
         print_record = ''
-        print_record += str("student ID \t") + str("First Name\t") + str("Surname\t") + str(
-            "Gender \t""\n")
+        print_record += str("student ID") +' \t'+ str("First Name") +' \t'+ str("Surname") +' \t\t'+ str(
+            "Gender""\t\t'\n")
         for record in records:
-            # str(record[6]) added for displaying the id
-            print_record +=str(record[0]) + ' \t\t' + str(record[1]) + ' '+ '\t\t' + \
-                           str(record[2])+' \t\t'  + str(record[6])  +"\n"
+
+            print_record +=str(record[0]) + ' \t\t' + str(record[1])  + '\t\t' + \
+                           str(record[2])+' \t\t'  + str(record[6]) +'\t\t' + "\n"
         query_label = Label(display, text=print_record,font=("Times New Roman", 10, "bold",))
         query_label.grid(row=1, column=0)
 
@@ -261,25 +252,25 @@ def std_data():
         c = conn.cursor()
         record_id = StdID.get()
         c.execute(""" UPDATE student_data2 SET
-                 StdID = StdID,
-                 Firstname = Firstname,
-                 Surname = Surname,
-                 Date_Of_Birth = Date_Of_Birth,
-                 Age = Age,
-                 Address = Address,
-                 Gender=Gender,
-                 Email=Email,
-                 Mobile_number =Mobile_number
-                 WHERE oid = oid""",
-                  {'StdID': EntryStdID.get(),
-                   'Firstname': EntryFirst_name.get(),
-                   'Surname': EntrySur_name.get(),
-                   'Date_Of_Birth': EntryDate_Of_Birth.get(),
-                   'Age':EntryAge.get(),
-                   'Address':EntryAddress.get(),
+                 StdID = :EntryStdID,
+                 Firstname = :EntryFirstname,
+                 Surname = :EntrySurname,
+                 Date_Of_Birth = :EntryDate_Of_Birth,
+                 Age = :EntryAge,
+                 Address = :EntryAddress,
+                 cboGender=:cboGender,
+                 Email=:EntryEmail,
+                 Mobile_number =: EntryMobile_number
+                 WHERE oid = :oid""",
+                  {'EntryStdID': EntryStdID.get(),
+                   'EntryFirstname': EntryFirst_name.get(),
+                   'EntrySurname': EntrySur_name.get(),
+                   'EntryDate_Of_Birth': EntryDate_Of_Birth.get(),
+                   'EntryAge':EntryAge.get(),
+                   'EntryAddress':EntryAddress.get(),
                    'cboGender': cboGender.get(),
-                   'Email': EntryEmail.get(),
-                   'Mobile_number': EntryMobile.get(),
+                   'EntryEmail': EntryEmail.get(),
+                   'EntryMobile_number': EntryMobile.get(),
                    'oid': record_id
                         }
             )
@@ -312,7 +303,7 @@ def std_data():
         global EntryEmail1
         global EntryMobile1
 
-
+        # label and entry for data to update
         lblStdID1 = Label(DataFrameLeft, font=("Times New Roman", 14, "bold",), padx=10, pady=10, text="student ID",
                          bg="white")
         lblStdID1.grid(row=0, column=0, sticky=W)
@@ -357,8 +348,6 @@ def std_data():
         lblGender1 = Label(DataFrameLeft, font=("Times New Roman", 14, "bold",), padx=10, pady=10, text="Gender",
                           bg="white")
         lblGender1.grid(row=6, column=0, sticky=W)
-        # EntryGender=Entry(DataFrameLeft,textvariable=Gender,font=("Times New Roman",14,"bold",),bg="white",width=28)
-        # EntryGender.grid(row=6,column=1)
         cboGender1 = ttk.Combobox(DataFrameLeft, textvariable=Gender, state="readonly",
                                  font=("Times New Roman", 14, "bold",), width=26)
         cboGender1['value'] = ('', 'Male', 'Female', 'Other')
@@ -406,7 +395,7 @@ def std_data():
         edit_btn.grid(row=0, column=5)
 
     def Delete():
-        # create database
+        # connect data base to project_database3
         conn = sqlite3.connect('project_database3.db')
         # create cursor
         c = conn.cursor()
