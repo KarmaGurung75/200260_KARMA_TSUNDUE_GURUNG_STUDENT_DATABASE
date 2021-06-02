@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d58d3a0d-6c27-4df3-aab8-b1d12d3c20fc" name="Default Changelist" comment="testing">
+    <list default="true" id="d58d3a0d-6c27-4df3-aab8-b1d12d3c20fc" name="Default Changelist" comment="Final Project">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Database.py" beforeDir="false" afterPath="$PROJECT_DIR$/Database.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Home_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/Home_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login_register.db" beforeDir="false" afterPath="$PROJECT_DIR$/login_register.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_database3.db" beforeDir="false" afterPath="$PROJECT_DIR$/project_database3.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +77,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Database_table" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="Database" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="200260_KARMA_TSUNDUE_GURUNG_STUDENT_DATABASE" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -88,7 +89,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Database_table.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Database.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -184,10 +185,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.Home_page (1)" />
+        <item itemvalue="Python.Database" />
         <item itemvalue="Python.database" />
         <item itemvalue="Python.Home_page" />
         <item itemvalue="Python.Add_new_data" />
-        <item itemvalue="Python.Database_table" />
       </list>
     </recent_temporary>
   </component>
@@ -256,7 +257,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622549839751</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Final Project">
+      <created>1622574576830</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1622574576830</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -273,7 +281,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="testing" />
-    <option name="LAST_COMMIT_MESSAGE" value="testing" />
+    <MESSAGE value="Final Project" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final Project" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
