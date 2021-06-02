@@ -1,6 +1,5 @@
 from tkinter import *
 from tkinter import ttk
-
 import sqlite3
 from tkinter import messagebox
 import time;
@@ -432,10 +431,7 @@ def std_data():
     dataUpdate = Button(ButtonFrame, text=" Update ",font=("Times New Roman", 12, "bold"), height=1, width=16, bd=2,
                        padx=8,command=Update)
     dataUpdate.grid(row=0,column=4)
-    #dataSave = Button(ButtonFrame, text=" Save ", font=("Times New Roman", 12, "bold"), height=1, width=16, bd=2,
-                    #  padx=8, command=Save)
-    #dataSave.grid(row=0, column=5)
-    # exit data button
+
     Exit = Button(ButtonFrame, text="Exit", font=("Times New Roman", 12, "bold"), height=1, width=16, bd=2, padx=8,
                   command=Exit)
     Exit.grid(row=0, column=6)
