@@ -38,6 +38,6 @@ Conclusion:
   
 Links For video and code: 
   GitHub Link:https://github.com/KarmaGurung75/200260_KARMA_TSUNDUE_GURUNG_STUDENT_DATABASE
-  YouTube Link:
+  YouTube Link: https://youtu.be/J2rhlX4Czbo
 
 
