@@ -4,6 +4,8 @@ from tkinter import messagebox
 import sqlite3
 import Database
 
+
+
 data=Tk()
 data.title("Welcome")
 data.iconbitmap("")
@@ -89,8 +91,6 @@ def register_success():
     address_entry.delete(0, END)
     contact_entry.delete(0, END)
     password_entry.delete(0, END)
-
-    #this is test
 
 
 def login_verify():
